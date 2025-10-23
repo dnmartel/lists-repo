@@ -1,51 +1,767 @@
-#!/usr/bin/env bash
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
-# Copyright (c) 2021-2025 tteck
-# Author: tteck (tteckster)
-# License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
-# Source: https://github.com/bluenviron/mediamtx
+# blocklist
+0.0.0.0 www.crazygames.com
+0.0.0.0 www.spielaffe.de
+0.0.0.0 itch.io
+0.0.0.0 browsergames.de
+0.0.0.0 poki.com
+0.0.0.0 www.1001spiele.de
+0.0.0.0 www.1001spiele.at
+0.0.0.0 spiele.spiegel.de
+0.0.0.0 www.browsergames.fm
+0.0.0.0 browsergames.gg
+0.0.0.0 browsergames.spielen.de
+0.0.0.0 spielen.de
+0.0.0.0 www.numuki.com
+0.0.0.0 www.innogames.com
+0.0.0.0 www.kongregate.com
+0.0.0.0 www.pogo.com
+0.0.0.0 www.arkadium.com
+0.0.0.0 lagged.com
+0.0.0.0 skribbl.io
+0.0.0.0 fortnite.io
+0.0.0.0 zombsroyale.io
+0.0.0.0 playclassic.games
+0.0.0.0 now.gg
+0.0.0.0 en.boardgamearena.com
+0.0.0.0 utopia-game.com
+0.0.0.0 www.jetztspielen.de
+0.0.0.0 www.spiele-kostenlos-online.de
+0.0.0.0 www.casinoonline.de
+0.0.0.0 spiele.rtl.de
+0.0.0.0 de.crazygames.com
+0.0.0.0 www.spiele-umsonst.de
+0.0.0.0 www.silvergames.com
+0.0.0.0 www.solitaireparadise.com
+0.0.0.0 stadtlandflussonline.net
+0.0.0.0 simsplay-game.com
+0.0.0.0 hole-io.com
+0.0.0.0 paper-io.com
+0.0.0.0 web.fortnite.com
+0.0.0.0 fortnite.com
+0.0.0.0 arcadespot.com
+0.0.0.0 www.play-games.com
+0.0.0.0 www.chess.com
+0.0.0.0 www.topgames.com
+0.0.0.0 store.steampowered.com
+0.0.0.0 steamcommunity.com
+0.0.0.0 help.steampowered.com
+0.0.0.0 www.spielen.com
+0.0.0.0 www.spiele123.com
+0.0.0.0 spiele.heise.de
+0.0.0.0 www.playit-online.de
+0.0.0.0 www.jetztspielen.ws
+0.0.0.0 www.jigsawplanet.com
+0.0.0.0 codenames.game
+0.0.0.0 puzzlegarage.com
+0.0.0.0 www.pacogames.com
+0.0.0.0 gameforge.com
+0.0.0.0 www.ninjagospielen.com
+0.0.0.0 spiel2.com
+0.0.0.0 solitaired.com
+0.0.0.0 www.freeonlinegames.com
+0.0.0.0 www.german-games.net
+0.0.0.0 de.y8.com
+0.0.0.0 kizi.com
+0.0.0.0 www.ufreegames.com
+0.0.0.0 www.solitr.com
+0.0.0.0 afreegame.net
+0.0.0.0 hotsimulator.com
+0.0.0.0 www.gratisspiele.at
+0.0.0.0 www.slotjava.com
+0.0.0.0 playclassic.games
+0.0.0.0 coolespiele.com
+0.0.0.0 www.coolespiele.com
+0.0.0.0 www.jopi.com
+0.0.0.0 snake.googlemaps.com
+0.0.0.0 www.gogy.com
+0.0.0.0 www.free80sarcade.com
+0.0.0.0 www.rockstargames.com
+0.0.0.0 playhop.com
+0.0.0.0 www.desura.com
+0.0.0.0 www.jackpots.ch
+0.0.0.0 www.supermario-spiele.com
+0.0.0.0 spielmit.de
+0.0.0.0 www.loewen-play.de
+0.0.0.0 www.repeat.gg
+0.0.0.0 www.loewen-play.de
+0.0.0.0 worldofwarships.eu
+0.0.0.0 papergames.io
+0.0.0.0 www.play.de
+0.0.0.0 www.zylom.com
+0.0.0.0 kour.io
+0.0.0.0 gaming-style.com
+0.0.0.0 www.gaming-style.com
+0.0.0.0 warmerise.com
+0.0.0.0 classicreload.com
+0.0.0.0 superhotgame.com
+0.0.0.0 venge.io
+0.0.0.0 warbrokers.io
+0.0.0.0 strike.ngames.com
+0.0.0.0 kirka.io
+0.0.0.0 1v1.lol
+0.0.0.0 voxiom.io
+0.0.0.0 battleboats.io
+0.0.0.0 mk48.io
+0.0.0.0 slither.io
+0.0.0.0 brutal.io
+0.0.0.0 warbot.io
+0.0.0.0 bitheroesarena.io
+0.0.0.0 goons.io
+0.0.0.0 hordes.io
+0.0.0.0 game.bitplanets.com
+0.0.0.0 bitplanets.com
+0.0.0.0 shellshock.io
+0.0.0.0 taming.io
+0.0.0.0 smashkarts.io
+0.0.0.0 super-hex.io
+0.0.0.0 zombs.io
+0.0.0.0 diep.io
+0.0.0.0 gats.io
+0.0.0.0 wings.io
+0.0.0.0 beta.deeeep.io
+0.0.0.0 deeeep.io
+0.0.0.0 gartic.io
 
-APP="MediaMTX"
-var_tags="${var_tags:-media}"
-var_cpu="${var_cpu:-2}"
-var_ram="${var_ram:-2048}"
-var_disk="${var_disk:-4}"
-var_os="${var_os:-debian}"
-var_version="${var_version:-12}"
-var_unprivileged="${var_unprivileged:-1}"
+# Bloqueo de juegos online / minijuegos / plataformas
+# Fecha: 2025-10-23
+# Versión extendida (300+ dominios)
 
-header_info "$APP"
-variables
-color
-catch_errors
+# --- Plataformas grandes ---
+store.steampowered.com
+steamcommunity.com
+steampowered.com
+steamstatic.com
+epicgames.com
+epicgamesstore.com
+fortnite.com
+roblox.com
+api.roblox.com
+minecraft.net
+mojang.com
+battle.net
+blizzard.com
+xbox.com
+xboxlive.com
+playstation.com
+riotgames.com
+leagueoflegends.com
+valorant.com
+ea.com
+origin.com
+uplay.com
+ubisoft.com
+gog.com
+bethesda.net
+cdprojektred.com
+activision.com
+callofduty.com
+square-enix.com
+bandainamcoent.com
+capcom.com
+rockstargames.com
+take2games.com
+2k.com
+nintendo.com
+supercell.com
+clashofclans.com
+clashroyale.com
+brawlstars.com
+king.com
+kingcdn.net
+plarium.com
+zynga.com
+playrix.com
+bigfishgames.com
+zylom.com
+garena.com
+nexon.com
+ncsoft.com
+webzen.com
+jagex.com
+runescape.com
+oldschool.runescape.com
+tibia.com
+playtibia.com
+travian.com
+ogame.org
+ikariam.gameforge.com
+tribalwars.com
+goodgamestudios.com
+elvenar.com
+armorgames.com
+kongregate.com
+newgrounds.com
+crazygames.com
+poki.com
+addictinggames.com
+y8.com
+coolmathgames.com
+agame.com
+miniclip.com
+games.yahoo.com
+boardgamearena.com
+tabletopia.com
+chess.com
+lichess.org
+itch.io
+gamejolt.com
+moddb.com
+nexusmods.com
+curseforge.com
+gameforge.com
+wildtangent.com
+g2a.com
+mmoga.com
+humblebundle.com
+greenmangaming.com
+gamestop.com
+paradoxinteractive.com
+paradoxplaza.com
+frontierstore.net
+frontier.co.uk
 
-function update_script() {
-  header_info
-  check_container_storage
-  check_container_resources
-  if [[ ! -d /opt/mediamtx/ ]]; then
-    msg_error "No ${APP} Installation Found!"
-    exit
-  fi
+# --- Portales FRIV y clones ---
+friv.com
+friv2.com
+friv3.com
+friv4school.com
+friv5online.com
+friv2017.com
+friv2018.com
+friv2019.com
+friv2020.com
+friv2021.com
+friv2022.com
+frivgames.com
+juegosfriv.com
+juegos-friv.com
+frivjuegos.com
+frivland.com
+frivmania.com
+frivplus.com
+friv2online.com
+friv1000games.net
+friv-2018.com
+friv-games.com
+frivtown.com
+frivhub.com
+frivtop.com
+frivgameplay.com
+friv1001games.com
+friv4school2020.com
+frivonline.com
+friv-games-online.com
+frivmax.com
+frivlegend.com
+frivclub.com
+frivv.com
+frivhero.com
+friv-games.net
+frivforkids.com
 
-  if check_for_gh_release "mediamtx" "bluenviron/mediamtx"; then
-    msg_info "Stopping service"
-    systemctl stop mediamtx
-    msg_ok "Service stopped"
+# --- Otros portales de minijuegos ---
+kizi.com
+kizi2.com
+kizi3.com
+kizi4.com
+kizi5.com
+kizi10.com
+kiz10.com
+kizigames.com
+kizigamesonline.com
+kizigames.net
+kizigamesfree.com
+kiziportal.com
+juegos.com
+juegosgratis.com
+juegosjuegos.com
+juegoskizi.com
+juegosonlinegratis.com
+juegosinfantiles.com
+juegosdechicas.com
+juegosdecarros.com
+juegosdetiros.com
+juegosdetodo.com
+juegosdemario.net
+juegosdeminecraft.com
+juegosdecoches.com
+juegosdiarios.com
+juegosparaninos.com
+juegos123.net
+juegos123.com
+juegoswapos.es
+juegoswapos.com
+juegosipo.com
+juegosteca.com
+juegosarea.com
+1001juegos.com
+1001juegos.es
+paisdelosjuegos.es
+paisdelosjuegos.com
+todojuegosgratis.es
+todojuegosgratis.com
+juegosenflash.com
+flashgames247.com
+freeonlinegames.com
+primarygames.com
+gamesloon.com
+gameflare.com
+lagged.com
+silvergames.com
+crazygamescdn.com
+poki-cdn.com
+y8cdn.com
+miniclipcdn.com
+agamecdn.com
+zibbo.com
+funnygames.org
+funnygames.be
+funnygames.biz
+gamesgames.com
+girlsgogames.com
+gamesgames.es
+mousebreaker.com
+shockwave.com
+games.co.uk
+gameslol.net
+gamesbutler.com
+gamesumo.com
+fogu.com
+games2girls.com
+spilgames.com
+spilcdn.net
+boystoys.com
+a10.com
+a10.io
+bestgames.com
+games4free.net
+games2win.com
+gamesxl.com
+gameskidsgames.com
+gamesfree.com
+gamesarena.com
+games2play.com
+gamesbee.com
+gamesonline.fm
+gamesmiracle.com
+gamesplaza.com
+games247.com
+gamesplanet.com
+gamesonly.net
+notdoppler.com
+funtomic.com
+nitrome.com
+candystand.com
+mousebreaker.com
+gamespot.com
+popcap.com
+pogo.com
+zuma.com
+bejeweled.com
+plantsvszombies.com
+bubblewitch.com
+bubblewitch3.com
+cookieclicker.com
+agar.io
+slither.io
+diep.io
+krunker.io
+moomoo.io
+shellshock.io
+surviv.io
+skribbl.io
+gartic.io
+scribble.io
+sploop.io
+wings.io
+bonk.io
+paper.io
+hole.io
+aquapark.io
+stack.io
+draw.io
+wormax.io
+wormate.io
+littlebigsnake.com
 
-    fetch_and_deploy_gh_release "mediamtx" "bluenviron/mediamtx" "prebuild" "latest" "/opt/mediamtx" "mediamtx*linux_amd64.tar.gz"
+# --- Juegos sociales y redes ---
+facebook.com
+fbcdn.net
+apps.facebook.com
+zyngaplayer.com
+socialpoint.com
+socialpointgames.com
+vk.com
+ok.ru
+mail.ru
+games.mail.ru
 
-    msg_info "Starting service"
-    systemctl start mediamtx
-    msg_ok "Service started"
-    msg_ok "Updated successfully"
-  fi
-  exit
-}
+# --- Emuladores / retro / Flash ---
+flashpointproject.org
+bluemaxima.org
+classicreload.com
+dosgamesarchive.com
+abandonia.com
+abandonwaredos.com
+retrogames.cc
+romsmania.cc
+romsmania.com
+emulatorgames.net
+emulator.online
+romsdownload.net
+coolrom.com
+romhustler.org
+romsmode.com
+romulation.org
+scummvm.org
+dosbox.com
+gamefabrique.com
+arcadespot.com
+retrogaming.cc
 
-start
-build_container
-description
+# --- Streaming / cloud gaming ---
+stadia.google.com
+xboxcloudgaming.com
+geforce.com
+boosteroid.com
+shadow.tech
+parsec.app
+rainway.com
+playkey.net
 
-msg_ok "Completed Successfully!\n"
-echo -e "${CREATING}${GN}${APP} setup has been successfully initialized!${CL}"
+store.steampowered.com
+steamcommunity.com
+steampowered.com
+steamstatic.com
+epicgames.com
+epicgamesstore.com
+launcher-production.epicgames.com
+fortnite.com
+roblox.com
+api.roblox.com
+games.roblox.com
+minecraft.net
+mojang.com
+play.minecraft.net
+callofduty.com
+activision.com
+battle.net
+blizzard.com
+overwatch.com
+diablo3.com
+wowhead.com
+worldofwarcraft.com
+xbox.com
+xboxlive.com
+playstation.com
+psnapi.com
+ps4.com
+ps5.com
+riotgames.com
+leagueoflegends.com
+valorant.com
+dota2.com
+gog.com
+gogassets.com
+origin.com
+ea.com
+eaassets.com
+ubisoft.com
+ubi.com
+uplay.com
+assettocorsa.com
+bethesda.net
+bethesda.com
+idsoftware.com
+idgames.com
+cdprojektred.com
+gamestop.com
+greenmangaming.com
+humblebundle.com
+itch.io
+gamejolt.com
+kongregate.com
+armorgames.com
+miniclip.com
+poki.com
+crazygames.com
+y8.com
+addictinggames.com
+newgrounds.com
+coolmathgames.com
+bigfishgames.com
+zylom.com
+plarium.com
+king.com
+kingcdn.net
+g2a.com
+mmoga.com
+garena.com
+garena.sg
+nexon.com
+ncsoft.com
+perfectworld.com
+square-enix.com
+square-enix-games.com
+bandainamcoent.com
+capcom.com
+rockstargames.com
+take2games.com
+2k.com
+remedy.fi
+twitch.tv
+youtube.com
+microsoft.com
+nintendo.com
+nintendo.co.jp
+nintendo-europe.com
+nintendo.net
+play.google.com
+apps.apple.com
+mobilegames.com
+supercell.com
+clashofclans.com
+clashroyale.com
+pubg.com
+pubgmobile.com
+bgmi.com
+warzone.com
+battlenet.com
+blizzard.net
+steamdb.info
+steamcharts.com
+metacritic.com
+gamespot.com
+ign.com
+polygon.com
+kotaku.com
+pcgamer.com
+destructoid.com
+rockpapershotgun.com
+eurogamer.net
+gameinformer.com
+vgchartz.com
+gamefaqs.com
+gamesradar.com
+digitaltrends.com
+gameforge.com
+wildtangent.com
+games.yahoo.com
+microsoftstore.com
+paradoxplaza.com
+paradoxinteractive.com
+frontier.co.uk
+frontierstore.com
+starcraft.com
+bgo.com
+pogo.com
+gametrailers.com
+gamebanana.com
+moddb.com
+nexusmods.com
+curseforge.com
+minecraftforum.net
+planetminecraft.com
+mc-market.org
+robloxgames.com
+robloxcdn.com
+serebii.net
+bulbapedia.bulbagarden.net
+pokemon.com
+chess.com
+lichess.org
+boardgamearena.com
+tabletopia.com
+flashgames247.com
+freeonlinegames.com
+primarygames.com
+agame.com
+gamesload.com
+miniclipcdn.com
+kongcdn.com
+poki-cdn.com
+y8cdn.com
+crazygamescdn.com
+slither.io
+agar.io
+diep.io
+krunker.io
+moomoo.io
+surviv.io
+shellshock.io
+skribbl.io
+gartic.io
+scribble.io
+bubblewitch3.com
+cookieclicker.com
+adoptme.com
+afk-arena.com
+lineagem.com
+blackdesertonline.com
+armello.com
+gamigo.com
+bigpoint.com
+inno-games.com
+plemiona.pl
+tribalwars.com
+travian.com
+ogame.org
+ikariam.gameforge.com
+elvenar.com
+goodgamestudios.com
+browsergames.com
+socialpoint.com
+zynga.com
+playrix.com
+playrixcdn.com
+superawesome.tv
+funorb.com
+neopets.com
+webzen.com
+flyff.com
+mabinogi.com
+ragnarokonline.com
+metin2.com
+tera.enmasse.com
+enmasse.com
+playtibia.com
+tibia.com
+oldschool.runescape.com
+runescape.com
+jagex.com
+rsbuddy.com
+osrsbox.com
+flashpointproject.org
+bluemaxima.org
+flashgamesarchive.org
+gamefabrique.com
+archive.org
+gamebanana.net
+gameserverhub.com
+gamer-network.com
+gameres.com
+gameloop.com
+bluestacks.com
+gameloop.gg
+geforce.com
+stadia.google.com
+xboxcloudgaming.com
+shadow.tech
+parsec.app
+rainway.com
+boosteroid.com
+playkey.net
+utopia.files
+riotgamesapi.com
+garenaid.com
+garena-downloads.com
+garenaonline.com
+garena-live.com
+riotgames-downloads.com
+riotgames-cdn.com
+gameshub.com
+gameflare.com
+freeplay.com
+freegames.com
+fgl.com
+games.mail.ru
+mail.ru
+vk.com (si quieres bloquear redes con juegos sociales)
+facebook.com (si quieres bloquear juegos en FB)
+fbcdn.net
+zyngaplayer.com
+kingcdn.com
+socialpointgames.com
+playmods.net
+mod.io
+romsmania.cc
+emulator.online
+emulatorgames.net
+romsdownload.net
+coolrom.com
+thepiratebay.org
+romulation.org
+romhustler.org
+emuparadise.me
+romsmode.com
+romsmania.org
+classicreload.com
+dosbox.com
+scummvm.org
+scummvm.net
+retrogames.cc
+retrogaming.cc
+abandonwaredos.com
+abandonia.com
+
+
+# Bloqueo dominios de juegos – lista ampliada
+# Fecha: 2025-10-23
+
+store.steampowered.com
+steamcommunity.com
+steampowered.com
+steamstatic.com
+epicgames.com
+launcher-production.epicgames.com
+roblox.com
+api.roblox.com
+minecraft.net
+mojang.com
+callofduty.com
+activision.com
+battle.net
+blizzard.com
+xbox.com
+xboxlive.com
+playstation.com
+psnapi.com
+riotgames.com
+ea.com
+origin.com
+coolmathgames.com
+kongregate.com
+miniclip.com
+agar.io
+slither.io
+games.yahoo.com
+y8.com
+poki.com
+addictinggames.com
+armorgames.com
+newgrounds.com
+gamejolt.com
+itch.io
+crazygames.com
+sketchful.io
+skribbl.io
+gartic.io
+boardgamearena.com
+tabletopia.com
+chess.com
+chess24.com
+sparkpeople.com
+gameshub.com
+gameforge.com
+wildtangent.com
+kongregate.com
+armorgames.com
+kongregate.co.uk
+gameflare.com
+freeonlinegames.com
+primarygames.com
+bigfishgames.com
+zylom.com
+plarium.com
+gog.com
+originservices-apps.com
+uplay.com
+ubisoft.com
+cdprojektred.com
+bethesda.net
+bluestacks.com
+geforce.com
+riotgames.com
+garena.com
+shellshock.io
+moosic.io
